@@ -5,7 +5,10 @@ import positionData from "./utility/positionData";
 const Positions = () => {
   let totalPnl = 0;
   for (const data of positionData) {
-    totalPnl += data.pnl;
+    const curValue = data.price * data.qty;
+    const pnl = curValue - data.avg * data.qty;
+
+    totalPnl = pnl + totalPnl;
   }
   return (
     <div className="flex flex-col gap-[1rem] p-[3rem]">
