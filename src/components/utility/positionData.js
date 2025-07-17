@@ -1,20 +1,22 @@
 const positionData = [
     {
-        instrument: "WIPRO",
-        qty: 2,
-        avg: 316.34,
-        ltp: 312.23,
-        pnl: -7.84,
-        chg: -1.24
-    },
-    {
-        instrument: "JUBLFOOD",
-        qty: 1,
-        avg: 3136.34,
-        ltp: 3082.23,
-        pnl: -42.84,
-        chg: -1.34
-    },
+    name: "HDFCBANK",
+    qty: 4,
+    avg: 1580.00,
+    price: 1598.50,
+    net: "+18.50",
+    day: "+1.17%",
+    isLoss: false
+  },
+  {
+    name: "DMART",
+    qty: 2,
+    avg: 4000.00,
+    price: 3980.00,
+    net: "-20.00",
+    day: "-0.50%",
+    isLoss: true
+  },
 ]
 
 export default positionData;

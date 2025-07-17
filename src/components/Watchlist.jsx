@@ -1,7 +1,7 @@
 import React from "react";
 import { ChevronUp, ChevronDown } from "lucide-react";
 import WatchlistBar from "./utility/WatchlistBar";
-import watchlistData  from "./utility/watchlistData";
+import holdingData  from "./utility/holdingData";
 
 const Watchlist = () => {
 
@@ -12,17 +12,19 @@ const Watchlist = () => {
           <span className="text-[1rem] text-gray-800">
             Search eginfy, bse, nifty fut weekly, gold, mcx.
           </span>
-          <span className="text-[1rem] text-gray-500">15/50</span>
+          <span className="text-[1rem] text-gray-500">{holdingData.length}/50</span>
         </div>
         <div className="wrapper flex flex-col shrink-0 w-full overflow-auto h-[42.5vh] border-b-1 border-[#c8c8c8ac]">
-          {watchlistData.map((item, index) => (
-            <WatchlistBar
+          {holdingData.map((item, index) => {
+            const curValue = item.price * item.qty;
+            const pnl = curValue - item.avg * item.qty;
+            return (<WatchlistBar
               key={index}
               name={item.name}
-              valuePercent={item.valuePercent}
-              amount={item.amount}
-            />
-          ))}
+              valuePercent={item.net}
+              amount={curValue}
+            />)
+         })}
         </div>
       </div>
     </div>

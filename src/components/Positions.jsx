@@ -38,9 +38,19 @@ const Positions = () => {
             <span>Chg.</span>
           </div>
         </div>
-        {positionData.map((data, index) => (
-          <PositionBar key={index} {...data} />
-        ))}
+        {positionData.map((data, index) => {
+          const curValue = data.price * data.qty;
+          const pnl = curValue - data.avg * data.qty;
+          return (<PositionBar key={index}
+                               instrument={data.name}
+                               qty={data.qty}
+                               avg={data.avg}
+                               ltp={data.price}
+                               pnl={pnl}
+                               chg={data.day}
+                               isLoss={data.isLoss}
+          />)
+         })}
       </div>
 
       <PositionBar

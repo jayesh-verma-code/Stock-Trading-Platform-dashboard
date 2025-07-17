@@ -16,17 +16,25 @@ const WatchlistBar = ({
       <div className={valuePercent > 0 ? "text-green-600" : "text-red-500"}>
         {name}
       </div>
-      <div className="flex w-[10rem] shrink-0 justify-evenly gap-[1rem] items-start">
-        <span className="text-gray-500">{valuePercent}%</span>
-        <span className={valuePercent > 0 ? "text-green-600" : "text-red-500"}>
+      <div className="flex w-[15rem] lg:w-[13rem] shrink-0 justify-between gap-[1rem]">
+        <span className="w-[33%] flex justify-start">
+          <span className="text-gray-500">{valuePercent}%</span>
+        </span>
+
+        <span className="w-[33%] flex justify-center">
+          <span className={valuePercent > 0 ? "text-green-600" : "text-red-500"}>
           {valuePercent > 0 ? (
             <ChevronUp size={16} />
           ) : (
             <ChevronDown size={16} />
           )}
         </span>
-        <span className={valuePercent > 0 ? "text-green-600" : "text-red-500"}>
+        </span>
+
+        <span className="w-[33%] flex justify-end">
+          <span className={valuePercent > 0 ? "text-green-600" : "text-red-500"}>
           {amount}
+        </span>
         </span>
       </div>
 
