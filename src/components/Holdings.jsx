@@ -1,15 +1,27 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import HoldingBar from "./utility/HoldingBar";
 import holdingData from "./utility/holdingData";
+import axios from 'axios';
 
 const Holdings = () => {
+
+  const [allHoldings, setAllHoldings] = useState([]);
+
+  useEffect(() => {
+    // fetching holdings data from database.
+    axios.get("http://localhost:8080/allHoldings").then((res) => {
+      console.log("fetching holding data from DB");
+      setAllHoldings(res.data);
+    });
+  },[]);
+
   return (
     <div className="flex flex-col p-[3rem] w-full">
-      <h1 className="text-[2.1rem] font-[500] text-gray-700 pb-[2rem]">Holding ({holdingData.length})</h1>
+      <h1 className="text-[2.1rem] font-[500] text-gray-700 pb-[2rem]">Holding ({allHoldings.length})</h1>
 
       <div className="wrapper flex flex-col shrink-0 border-[#c8c8c8ac] border-b-1 border-t-1 h-[64vh] overflow-auto text-gray-500">
         <HoldingBar color={"gray"} />
-        {holdingData.map((item, index) => {
+        {allHoldings.map((item, index) => {
           const curValue = item.price * item.qty;
           return (<HoldingBar key={index}
                       instrument={item.name}

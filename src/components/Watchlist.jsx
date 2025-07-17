@@ -14,7 +14,7 @@ const Watchlist = () => {
           </span>
           <span className="text-[1rem] text-gray-500">{holdingData.length}/50</span>
         </div>
-        <div className="wrapper flex flex-col shrink-0 w-full overflow-auto h-[42.5vh] border-b-1 border-[#c8c8c8ac]">
+        <div className="wrapper flex flex-col shrink-0 w-full overflow-auto border-b-1 border-[#c8c8c8ac]">
           {holdingData.map((item, index) => {
             const curValue = item.price * item.qty;
             const pnl = curValue - item.avg * item.qty;

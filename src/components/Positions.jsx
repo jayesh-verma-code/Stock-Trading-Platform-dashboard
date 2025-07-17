@@ -1,10 +1,22 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import PositionBar from "./utility/PositionBar";
 import positionData from "./utility/positionData";
+import axios from 'axios';
 
 const Positions = () => {
+
+  const [allPositions, setAllPositions] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/allPositions").then((res) => {
+      console.log("fetching positions data from DB");
+      setAllPositions(res.data);
+    });
+
+  },[]);
+
   let totalPnl = 0;
-  for (const data of positionData) {
+  for (const data of allPositions) {
     const curValue = data.price * data.qty;
     const pnl = curValue - data.avg * data.qty;
 
@@ -41,7 +53,7 @@ const Positions = () => {
             <span>Chg.</span>
           </div>
         </div>
-        {positionData.map((data, index) => {
+        {allPositions.map((data, index) => {
           const curValue = data.price * data.qty;
           const pnl = curValue - data.avg * data.qty;
           return (<PositionBar key={index}
