@@ -21,6 +21,12 @@ const Watchlist = () => {
     setWatchlistId(id);
   };
 
+  // buy or sell 
+  const [BnS, setBnS] = useState("BUY");
+  const getBnS = (value) => {
+      setBnS(value);
+  };
+
 
   useEffect(() => {
     // fetching holdings data from database.
@@ -52,11 +58,15 @@ const Watchlist = () => {
               id={item._id}
               isModelOpenStatus={handleModelOpen}
               handleWatchlistId={handleWatchlistId}
+              getBnS={getBnS}
             />)
          })}
         </div>
 
-         {isModelOpen && <WatchlistModel isModelOpenStatus={handleModelOpen} id={watchlistId}  /> }
+         {isModelOpen && <WatchlistModel isModelOpenStatus={handleModelOpen}
+                                         id={watchlistId}
+                                         tradeType={BnS}
+                                         getBnS={getBnS}  /> }
       </div>
     </div>
   );

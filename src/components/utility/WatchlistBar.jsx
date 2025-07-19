@@ -8,7 +8,8 @@ const WatchlistBar = ({
   amount = 1555.46,
   id,
   isModelOpenStatus,
-  handleWatchlistId
+  handleWatchlistId,
+  getBnS
 }) => {
   const [hover, sethover] = useState(false);
 
@@ -42,7 +43,10 @@ const WatchlistBar = ({
         </span>
       </div>
 
-      {hover ? <WatchlistHoverBar id={id} isModelOpenStatus={isModelOpenStatus} handleWatchlistId={handleWatchlistId}  /> : null}
+      {hover ? <WatchlistHoverBar id={id}
+                                  isModelOpenStatus={isModelOpenStatus} 
+                                  handleWatchlistId={handleWatchlistId}
+                                  getBnS={getBnS}  /> : null}
     </div>
    
 
