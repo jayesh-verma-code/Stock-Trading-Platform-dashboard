@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { ChevronUp, ChevronDown} from "lucide-react";
 import WatchlistHoverBar from "./WatchlistHoverBar";
 
@@ -6,10 +6,14 @@ const WatchlistBar = ({
   name = "NIFY",
   valuePercent = -1.61,
   amount = 1555.46,
+  id,
+  isModelOpenStatus,
+  handleWatchlistId
 }) => {
   const [hover, sethover] = useState(false);
+
   return (
-    <div className="relative flex justify-between w-full px-[2rem] py-[1rem] border-[#c8c8c8ac] border-b-1"
+      <div className="relative flex justify-between w-full px-[2rem] py-[1rem] border-[#c8c8c8ac] border-b-1"
     onMouseOver={() => {return sethover(true)}}
     onMouseLeave={() => {return sethover(false)}}
     >
@@ -38,8 +42,10 @@ const WatchlistBar = ({
         </span>
       </div>
 
-      {hover ? <WatchlistHoverBar/> : null}
+      {hover ? <WatchlistHoverBar id={id} isModelOpenStatus={isModelOpenStatus} handleWatchlistId={handleWatchlistId}  /> : null}
     </div>
+   
+
   );
 };
 
