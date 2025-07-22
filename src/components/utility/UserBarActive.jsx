@@ -1,7 +1,25 @@
 import React from "react";
 import {CircleUserRound, UserRound, LogOut, CircleDot, HandHelping, UserRoundPlus, Command} from 'lucide-react';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 const UserBarActive = () => {
+  const handleLogout = async () => {
+  try {
+    const result = await axios.get("http://localhost:8080/logout", { withCredentials: true });
+
+    if (result.data.success) {
+      window.location.href = "http://localhost:5173/";
+    } else {
+      alert("Wrong request");
+    }
+  } catch (err) {
+    console.error("Logout failed", err);
+    alert("Something went wrong");
+  }
+};
+
+
   return (
     <div className="absolute z-50 top-[13rem] md:top-[6rem] right-[1rem] flex flex-col border-[#c8c8c8ac] border-2 rounded-[5px] bg-[#ffffff]">
       <div className="p-[1.5rem] pr-[8rem] flex flex-col border-[#c8c8c8ac] border-b-2">
@@ -68,14 +86,12 @@ const UserBarActive = () => {
           <span>Help</span>
         </div>
 
-        <a href="" className="px-[1rem]">
-          <div className="flex text-[1.5rem] rounded-[5px] items-center gap-[1rem] text-red-500 py-[0.5rem] hover:bg-red-100">
+        <div onClick={handleLogout} className="flex px-[1rem] text-[1.5rem] rounded-[5px] items-center gap-[1rem] text-red-500 py-[0.5rem] hover:bg-red-100">
             <span>
               <LogOut size={16} strokeWidth={2.5} />
             </span>
             <span>Logout</span>
           </div>
-        </a>
       </div>
     </div>
   );

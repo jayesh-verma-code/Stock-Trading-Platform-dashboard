@@ -1,12 +1,27 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Clock, SquareMinus } from "lucide-react";
+import axios from 'axios';
 
-const Summary = () => {
+const Summary = ({mobileNumber}) => {
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8080/getUser/${mobileNumber}`);
+        setUserData(res.data);  // Correct way to set resolved data
+      } catch (err) {
+        console.error("Error fetching user data:", err);
+      }
+    };
+
+    if (mobileNumber) fetchUser();
+  }, [mobileNumber]);  
   return (
     <div className="flex p-[3rem]">
       <div className="flex flex-col w-full gap-[1rem]">
         <h1 className="text-[2.5rem] py-[1.5rem] border-[#c8c8c8ac] border-b-1 font-[500] text-gray-700">
-          Hi, Jayesh
+          Hi, {userData.name}
         </h1>
 
         <div className="flex flex-col gap-[1rem] text-gray-700 py-[4rem] border-[#c8c8c8ac] border-b-1">
