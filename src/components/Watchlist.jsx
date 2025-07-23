@@ -4,6 +4,7 @@ import WatchlistBar from "./utility/WatchlistBar";
 import holdingData  from "./utility/holdingData";
 import axios from "axios";
 import WatchlistModel from "./utility/WatchlistModel";
+import WatchlistGraph from "./graph/WatchlistGraph";
 
 const Watchlist = () => {
 
@@ -37,7 +38,7 @@ const Watchlist = () => {
   },[]);
 
   return (
-    <div className="col-lg-4 col-md-4 col-sm-12 h-[calc(100vh-6.2rem)] border-[#c8c8c8ac] border-r-1 border-l-1 border-b-1">
+    <div className="col-lg-4 col-md-4 col-sm-12 flex flex-col shrink-0 h-[92vh] overflow-y-auto border-[#c8c8c8ac] border-r-1 border-l-1 border-b-1">
       <div className="row relative">
         <div className="col-lg-12 p-[1.5rem] px-[2rem] flex justify-between border-[#c8c8c8ac] border-b-1">
           <span className="text-[1rem] text-gray-800">
@@ -68,6 +69,9 @@ const Watchlist = () => {
                                          tradeType={BnS}
                                          getBnS={getBnS}  /> }
       </div>
+
+      <div>Watchlist Pie chart</div>
+      <WatchlistGraph allHoldings={allHoldings}/>
     </div>
   );
 };

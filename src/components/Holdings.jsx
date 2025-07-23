@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import HoldingBar from "./utility/HoldingBar";
 import holdingData from "./utility/holdingData";
 import axios from 'axios';
+import HoldingGraph from "./graph/HoldingGraph";
 
 const Holdings = () => {
 
@@ -16,7 +17,7 @@ const Holdings = () => {
   },[]);
 
   return (
-    <div className="flex flex-col p-[3rem] w-full">
+    <div className="flex flex-col p-[3rem] w-full h-[92vh] overflow-y-auto shrink-0">
       <h1 className="text-[2.1rem] font-[500] text-gray-700 pb-[2rem]">Holding ({allHoldings.length})</h1>
 
       <div className="wrapper flex flex-col shrink-0 border-[#c8c8c8ac] border-b-1 border-t-1 h-[64vh] overflow-auto text-gray-500">
@@ -49,6 +50,8 @@ const Holdings = () => {
           <p className="text-[1.2rem]">Current value</p>
         </div>
       </div>
+
+      <HoldingGraph allHolding={allHoldings}/>
     </div>
   );
 };
