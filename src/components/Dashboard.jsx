@@ -8,6 +8,7 @@ import Positions from './Positions';
 import Funds from './Funds';
 import Apps from './Apps';
 
+//Dashboard
 const Dashboard = () => {
   const [mobileNumber, setMobileNumber] = useState(undefined);
 
@@ -19,7 +20,6 @@ const Dashboard = () => {
 }, []);
   return (
     <div className='row allwhite'>
-      
       <div className='col-lg-8 col-md-8 col-sm-12'>
         <Routes>
           <Route path='/' element={<Summary mobileNumber={mobileNumber} />}/>
