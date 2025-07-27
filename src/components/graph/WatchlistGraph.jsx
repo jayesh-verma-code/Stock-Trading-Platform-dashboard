@@ -35,7 +35,7 @@ const WatchlistGraph = ({ allHoldings }) => {
   const prices = allHoldings.map((stock) => stock.price);
   const softColors = generateSoftBrightColors(allHoldings.length);
 
-  const WatchlistGraphData = {
+  const WatchlistGraphDatas = {
     labels,
     datasets: [
       {
@@ -50,7 +50,7 @@ const WatchlistGraph = ({ allHoldings }) => {
 
   return (
     <div className='p-[2rem] mt-[1rem] w-full px-[5rem]'>
-      <Pie options={options} data={WatchlistGraphData} />
+      <Pie options={options} data={WatchlistGraphDatas} />
     </div>
   );
 };
