@@ -34,7 +34,7 @@ const WatchlistGraph = ({ allHoldings }) => {
   const labels = allHoldings.map((subArray) => subArray["name"]);
   const prices = allHoldings.map((stock) => stock.price);
   const softColors = generateSoftBrightColors(allHoldings.length);
-
+//watchlist graph data
   const WatchlistGraphDatas = {
     labels,
     datasets: [
