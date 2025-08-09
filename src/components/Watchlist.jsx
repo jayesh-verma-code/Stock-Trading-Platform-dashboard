@@ -70,7 +70,7 @@ const Watchlist = () => {
                                          getBnS={getBnS}  /> }
       </div>
 
-      <div>Watchlist Pie chart</div>
+      
       <WatchlistGraph allHoldings={allHoldings}/>
     </div>
   );
